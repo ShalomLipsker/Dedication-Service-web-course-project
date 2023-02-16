@@ -1,0 +1,63 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+}
+
+mat-form-field {
+    margin-top: 10px;
+}
+
+.hr-solid {
+    border: 0.1px solid #ededed;
+    width: 100%;
+}
+
+.date-form-field {
+    margin: 0 5px;
+    width: 50px;
+}
+
+.date-info {
+    margin-top: -13px;
+    display: flex;
+    flex-direction: row;
+}
+
+.date-rendered-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-right: 11px;
+}
+
+.form-field-image {
+    margin: 20px 0;
+}
+
+.form-title {
+    margin: 0;
+    color: rgb(92, 91, 91);
+}
+
+.mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0 !important;
+}
+
+.image-cropped {
+    max-width: 200px;
+    align-self: center;
+    border-radius: 15px;
+    margin: 3px 10px;
+}
+
+.slider {
+    margin-top: 10px;
+}
+
+.submit-btn {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}

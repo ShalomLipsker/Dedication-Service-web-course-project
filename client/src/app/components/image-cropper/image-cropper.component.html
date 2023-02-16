@@ -1,0 +1,11 @@
+<div class="m-container">
+    <h1 mat-dialog-title>התאמת תמונה</h1>
+
+    <image-cropper class="cropper" [imageChangedEvent]="input?.imageChangedEvent" [maintainAspectRatio]="true"
+        [aspectRatio]="3 / 4" format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [imageQuality]='70'></image-cropper>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">ביטול</button>
+        <button mat-button [mat-dialog-close]="croppedImage" cdkFocusInitial>שמירה</button>
+    </div>
+</div>

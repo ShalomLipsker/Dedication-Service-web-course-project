@@ -1,0 +1,65 @@
+<form class="form-container" [formGroup]="dedicationForm" (ngSubmit)="onSubmit()" dir="rtl">
+    <h1>יצירת הקדשה</h1>
+
+    <mat-form-field appearance="outline">
+        <mat-label>שם הנפטר</mat-label>
+        <input matInput placeholder="שם עבור ההקדשה" formControlName="title">
+        <mat-hint>יופיע בכותרת</mat-hint>
+        <mat-error *ngIf='dedicationForm.controls.title.errors'>שם לא תקין</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>תיאור</mat-label>
+        <textarea matInput placeholder="כמה מילים על הנפטר" formControlName="description"></textarea>
+        <mat-hint>יופיע כטקסט קטן מתחת לכותרת</mat-hint>
+        <mat-error *ngIf='dedicationForm.controls.description.errors'>תיאור לא תקין</mat-error>
+    </mat-form-field>
+
+    <div class='form-field-image'>
+        <hr class="hr-solid">
+        <h4 class="form-title">העלאת תמונה</h4>
+        <input mat-button type="file" (change)="fileChangeEvent($event)" />
+        <img class='image-cropped' [src]="dedicationForm.controls.image.value" />
+        <mat-error *ngIf='dedicationForm.controls.image.errors'>יש להעלות תמונה</mat-error>
+    </div>
+
+    <div formGroupName="date">
+        <hr class="hr-solid">
+        <p class='form-title'>תאריך עברי (יש להכניס במספרים)</p>
+
+        <div class='date-info'>
+            <mat-form-field appearance="standard" class="date-form-field">
+                <mat-label>יום:</mat-label>
+                <input matInput type="number" placeholder="1-30" formControlName="day" min="1" max='30'>
+                <mat-error *ngIf='formDate.controls.day.errors'>יום לא תקין</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="date-form-field">
+                <mat-label>חודש:</mat-label>
+                <mat-select formControlName="month">
+                    <mat-option *ngFor="let month of hebMonth" [value]="month.id">
+                        {{month.displayName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf='formDate.controls.month.errors'>יש לבחור חודש</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="date-form-field">
+                <mat-label>שנה:</mat-label>
+                <input matInput type="number" placeholder="5500-6000" formControlName="year" min="5500" max='6000'>
+                <mat-error *ngIf='formDate.controls.year.errors'>שנה לא תקינה</mat-error>
+            </mat-form-field>
+
+            <div class="date-rendered-text">
+                {{hebDateRendered}}
+            </div>
+        </div>
+
+    </div>
+    
+    <mat-slide-toggle class="slider" formControlName='isRepeated'>חוזר כל שנה </mat-slide-toggle>
+    
+    <button class='submit-btn' mat-raised-button color="primary" type="submit"
+        [disabled]="!dedicationForm.valid">שמור</button>
+    <button type="button" mat-button color="primary" (click)='router.navigate(["dedication"])'>ביטול</button>
+</form>
