@@ -6,8 +6,16 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  { path: 'dedication/:dedicationId', component: DedicationFormComponent, canActivate: [AuthGuard] },
-  { path: 'dedication', component: DedicationListComponent, canActivate: [AuthGuard] },
+  {
+    path: 'dedication/:dedicationId',
+    component: DedicationFormComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'dedication',
+    component: DedicationListComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'login', component: LoginComponent },
   // { path: 'error', component: ErrorScreenComponent },
   { path: '**', redirectTo: 'dedication' },
@@ -15,6 +23,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

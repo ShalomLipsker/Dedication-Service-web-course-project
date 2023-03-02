@@ -5,23 +5,19 @@ import { DedicationService } from 'src/app/services/dedication.service';
 @Component({
   selector: 'app-dedication-list',
   templateUrl: './dedication-list.component.html',
-  styleUrls: ['./dedication-list.component.scss']
+  styleUrls: ['./dedication-list.component.scss'],
 })
 export class DedicationListComponent implements OnInit {
   onlyActive: boolean = false;
 
-
   constructor(
     public dedicationService: DedicationService,
-    public router: Router
-  ) { }
+    public router: Router,
+  ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   navigateToCreate() {
-    this.router.navigate(['dedication', 'create'])
+    this.router.navigate(['dedication', 'create']);
   }
-
 }

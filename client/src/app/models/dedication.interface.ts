@@ -1,10 +1,10 @@
-import { PlainHebDate } from "./PlainHebDate.interface";
+import { PlainHebDate } from './PlainHebDate.interface';
 
 export interface Dedication {
-    _id: string;
-    image: any;
-    title: string;
-    date: PlainHebDate;
-    expiredAt: Date;
-    description: string;
+  _id: string;
+  image: any;
+  title: string;
+  date: PlainHebDate;
+  expiredAt: Date;
+  description: string;
 }

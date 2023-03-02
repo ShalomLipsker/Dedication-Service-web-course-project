@@ -7,8 +7,7 @@ import { Role } from './auth/Role.enum';
 
 @Controller()
 export class AppController {
-
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @Public()
@@ -16,11 +15,10 @@ export class AppController {
   async login(@Request() req) {
     return this.authService.managerLogin(req.user);
   }
- 
+
   @Roles(Role.App)
   @Get('auth/login')
   async checkLogin(@Request() req) {
     return true;
   }
-
 }

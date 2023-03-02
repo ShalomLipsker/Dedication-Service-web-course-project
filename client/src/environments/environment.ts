@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  apiServerURL: "http://localhost:3000",
+  apiServerURL: 'http://localhost:3000',
   cookies: {
     authToken: {
-      title: "Authorization"
-    }
-  }
+      title: 'Authorization',
+    },
+  },
 };
 
 /*

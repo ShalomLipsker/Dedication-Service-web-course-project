@@ -1,21 +1,21 @@
-<div class='card-container'>
-    <div class='card-section'>
-        <div class="text-content">
-            <div class='text-header'>{{dedication.title}}</div>
-            <div class='text-sub-header'>{{renderPlainHebDate(dedication.date)}}</div>
-            <div class='text-description'>{{dedication.description}}</div>
-            <hr class='hr-solid'>
-            <div class='info-area'>
-                {{isDedicationRepeat(dedication) ? 'חוזר כל שנה' : 'חד פעמי'}}
-            </div>
-        </div>
-        <div class="image-content">
-            <img [src]='dedication.image' alt="Photo of dedication">
-        </div>
+<div class="card-container">
+  <div class="card-section">
+    <div class="text-content">
+      <div class="text-header">{{dedication.title}}</div>
+      <div class="text-sub-header">{{renderPlainHebDate(dedication.date)}}</div>
+      <div class="text-description">{{dedication.description}}</div>
+      <hr class="hr-solid">
+      <div class="info-area">
+        {{isDedicationRepeat(dedication) ? 'חוזר כל שנה' : 'חד פעמי'}}
+      </div>
     </div>
-    <hr class='hr-solid'>
-    <div class='card-actions-section'>
-        <button mat-button (click)='editDedication()'>עריכה</button>
-        <button mat-button (click)='deleteDedication()'>מחיקה</button>
+    <div class="image-content">
+      <img [src]="dedication.image" alt="Photo of dedication">
     </div>
+  </div>
+  <hr class="hr-solid">
+  <div class="card-actions-section">
+    <button mat-button (click)="editDedication()">עריכה</button>
+    <button mat-button (click)="deleteDedication()">מחיקה</button>
+  </div>
 </div>

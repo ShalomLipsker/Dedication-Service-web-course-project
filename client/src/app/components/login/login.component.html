@@ -1,18 +1,19 @@
 <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()" dir="rtl">
-    <h1>סידור בית הלוי - ניהול הקדשות</h1>
+  <h1>סידור בית הלוי - ניהול הקדשות</h1>
 
-    <mat-form-field appearance="outline">
-        <mat-label>שם משתמש</mat-label>
-        <input matInput placeholder="" formControlName="username">
-        <mat-error *ngIf='loginForm.controls.username.errors'>יש להכניס שם</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>שם משתמש</mat-label>
+    <input matInput placeholder="" formControlName="username">
+    <mat-error *ngIf="loginForm.controls.username.errors">יש להכניס שם</mat-error>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>סיסמה</mat-label>
-        <input type='password' matInput placeholder="" formControlName="password">
-        <mat-error *ngIf='loginForm.controls.password.errors'>יש להכניס סיסמה</mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>סיסמה</mat-label>
+    <input type="password" matInput placeholder="" formControlName="password">
+    <mat-error *ngIf="loginForm.controls.password.errors">יש להכניס סיסמה</mat-error>
+  </mat-form-field>
 
-    <button class='submit-btn' mat-raised-button color="primary" type="submit"
-        [disabled]="!loginForm.valid">שלח</button>
+  <button class="submit-btn" mat-raised-button color="primary" type="submit"
+          [disabled]="!loginForm.valid">שלח
+  </button>
 </form>

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { DedicationService } from './dedication.service';
-import { DedicationController } from './dedication.controller';
-import { DatabaseModule } from '../database/database.module';
-import { dedicationProviders } from 'src/database/dedication.providers';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from 'src/auth/jwt/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/roles.guard';
+import { dedicationProviders } from 'src/database/dedication.providers';
+import { DatabaseModule } from '../database/database.module';
+import { DedicationController } from './dedication.controller';
+import { DedicationService } from './dedication.service';
 
 @Module({
   imports: [DatabaseModule],
@@ -21,6 +21,6 @@ import { RolesGuard } from 'src/auth/roles.guard';
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
-  ]
+  ],
 })
-export class DedicationModule { }
+export class DedicationModule {}

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { ApiService } from './api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private _$isLogin: BehaviorSubject<boolean>;
@@ -26,19 +26,25 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    this.apiService.login(username, password).subscribe(res => {
-      this.cookieService.put(environment.cookies.authToken.title, res.access_token)
-      this._$isLogin.next(true);
-      this.router.navigate(['dedication']);
-    }, err => {
-      this._$isLogin.next(false);
-      if (err.status == 401) {
-        alert('שם משתמש או סיסמה שגויים');
-      } else {
-        alert('בעיית שרת, נא לנסות שוב');
-      }
-      this.router.navigate(['login']);
-    })
+    this.apiService.login(username, password).subscribe(
+      (res) => {
+        this.cookieService.put(
+          environment.cookies.authToken.title,
+          res.access_token,
+        );
+        this._$isLogin.next(true);
+        this.router.navigate(['dedication']);
+      },
+      (err) => {
+        this._$isLogin.next(false);
+        if (err.status == 401) {
+          alert('שם משתמש או סיסמה שגויים');
+        } else {
+          alert('בעיית שרת, נא לנסות שוב');
+        }
+        this.router.navigate(['login']);
+      },
+    );
   }
 
   logout() {
@@ -48,13 +54,16 @@ export class AuthService {
 
   private _isLogin() {
     const obs = this.apiService.checkLogin().pipe(share());
-    obs.subscribe(res => {
-      this._$isLogin.next(true);
-    }, err => {
-      this._$isLogin.next(false);
-      this.router.navigate(['login']);
-    })
+    obs.subscribe(
+      (res) => {
+        this._$isLogin.next(true);
+      },
+      (err) => {
+        this._$isLogin.next(false);
+        this.router.navigate(['login']);
+      },
+    );
 
-    return obs.pipe(map(res => res ? true : false));
+    return obs.pipe(map((res) => (res ? true : false)));
   }
 }

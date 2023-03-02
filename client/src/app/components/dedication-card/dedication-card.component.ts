@@ -8,7 +8,7 @@ import { renderPlainHebDate } from 'src/app/utils/hebrew-date.util';
 @Component({
   selector: 'app-dedication-card',
   templateUrl: './dedication-card.component.html',
-  styleUrls: ['./dedication-card.component.scss']
+  styleUrls: ['./dedication-card.component.scss'],
 })
 export class DedicationCardComponent implements OnInit {
   @Input() dedication!: Dedication;
@@ -18,24 +18,25 @@ export class DedicationCardComponent implements OnInit {
 
   constructor(
     private dedicationService: DedicationService,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   editDedication() {
-    this.router.navigate(['dedication', this.dedication._id])
+    this.router.navigate(['dedication', this.dedication._id]);
   }
 
   deleteDedication() {
-    if (confirm("האם לאשר מחיקה?")) {
-      this.dedicationService.deleteDedication(this.dedication._id).subscribe(res => {
-        alert("נמחק בהצלחה");
-      }, err => {
-        alert("אירעה בעיה, יש לנסות שוב");
-      })
+    if (confirm('האם לאשר מחיקה?')) {
+      this.dedicationService.deleteDedication(this.dedication._id).subscribe(
+        (res) => {
+          alert('נמחק בהצלחה');
+        },
+        (err) => {
+          alert('אירעה בעיה, יש לנסות שוב');
+        },
+      );
     }
   }
-
 }
