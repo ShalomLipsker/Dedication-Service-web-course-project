@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { map, share } from 'rxjs/operators';
 import { Dedication } from '../models/dedication.interface';
 import { ApiService } from './api.service';
 
@@ -41,12 +41,16 @@ export class DedicationService {
   private _updateDedication(dedication: Dedication) {
     const d = this._$allDedications.value;
     this._$allDedications.next(
-      d.map((d) => (d._id == dedication._id ? dedication : d)),
+      d.map((d) => (d._id === dedication._id ? dedication : d)),
     );
   }
 
   dedicationById(dedicationId: string) {
-    return this._$allDedications.value.find((d) => d._id == dedicationId);
+    return this._$allDedications.pipe(
+      map((allDedications) =>
+        allDedications.find((dedication) => dedication._id === dedicationId),
+      ),
+    );
   }
 
   createDedication = (dedication: Dedication) => {

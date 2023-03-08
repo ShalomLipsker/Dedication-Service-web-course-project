@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  showForm = false;
 
   constructor(private authService: AuthService) {
     this.loginForm = new FormGroup({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.authService.login(
       this.loginForm.value.username,
       this.loginForm.value.password,

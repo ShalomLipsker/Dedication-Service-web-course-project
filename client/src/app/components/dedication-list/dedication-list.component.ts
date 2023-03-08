@@ -8,7 +8,7 @@ import { DedicationService } from 'src/app/services/dedication.service';
   styleUrls: ['./dedication-list.component.scss'],
 })
 export class DedicationListComponent implements OnInit {
-  onlyActive: boolean = false;
+  onlyActive = false;
 
   constructor(
     public dedicationService: DedicationService,

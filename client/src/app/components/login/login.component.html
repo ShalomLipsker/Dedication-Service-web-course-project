@@ -1,19 +1,36 @@
-<form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()" dir="rtl">
-  <h1>סידור בית הלוי - ניהול הקדשות</h1>
+<div class="login-container">
+  <app-candle (animationend)="showForm = true"></app-candle>
 
-  <mat-form-field appearance="outline">
-    <mat-label>שם משתמש</mat-label>
-    <input matInput placeholder="" formControlName="username">
-    <mat-error *ngIf="loginForm.controls.username.errors">יש להכניס שם</mat-error>
-  </mat-form-field>
+  <form *ngIf="showForm" class="login-form animated fadeIn slow" [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        dir="rtl" autocomplete="off">
+    <!-- Need to disable autofill -->
+    <input autocomplete="false" name="hidden" type="text" style="display:none;">
 
-  <mat-form-field appearance="outline">
-    <mat-label>סיסמה</mat-label>
-    <input type="password" matInput placeholder="" formControlName="password">
-    <mat-error *ngIf="loginForm.controls.password.errors">יש להכניס סיסמה</mat-error>
-  </mat-form-field>
+    <div class="form-headline">
+      <span class="title">סידור בית הלוי</span>
+      <span class="subtitle">ניהול הקדשות</span>
+    </div>
 
-  <button class="submit-btn" mat-raised-button color="primary" type="submit"
-          [disabled]="!loginForm.valid">שלח
-  </button>
-</form>
+    <div class="form-input">
+      <mat-form-field appearance="outline">
+        <mat-label>שם משתמש</mat-label>
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <input matInput placeholder="" formControlName="username" autocomplete="off">
+        <mat-error *ngIf="loginForm.controls.username.errors">יש להכניס שם</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>סיסמה</mat-label>
+        <mat-icon matSuffix>key</mat-icon>
+        <input type="password" matInput placeholder="" formControlName="password" autocomplete="off">
+        <mat-error *ngIf="loginForm.controls.password.errors">יש להכניס סיסמה</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button class="submit-btn" mat-raised-button type="submit"
+            [disabled]="!loginForm.valid">
+      שלח
+    </button>
+  </form>
+</div>

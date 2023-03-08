@@ -1,12 +1,23 @@
 <div class="list-container">
-  <h1>רשימת הקדשות</h1>
+  <h1 class="header">רשימת הקדשות</h1>
+
   <div class="actions">
     <mat-checkbox dir="rtl" [(ngModel)]="onlyActive">רק הקדשות פעילות</mat-checkbox>
-    <button class="btn-create" mat-flat-button color="primary" (click)="navigateToCreate()">הוספת הקדשה</button>
+    <button class="create-dedication-btn" mat-flat-button (click)="navigateToCreate()">
+      <mat-icon>add</mat-icon>
+      הוספת הקדשה
+    </button>
   </div>
-  <div class="loading" *ngIf="dedicationService.dedicationsFetched == false">טוען...</div>
-  <app-dedication-card
-    *ngFor="let dedication of dedicationService.$allDedications | async | OnlyActiveDedications:onlyActive"
-    [dedication]="dedication">
+
+  <mat-spinner *ngIf="dedicationService.dedicationsFetched == false" diameter="120" strokeWidth="10"
+               class="loading"></mat-spinner>
+
+  <app-dedication-card class="animated"
+                       *ngFor="let dedication of dedicationService.$allDedications | async |
+                       OnlyActiveDedications:onlyActive; let index = index"
+                       [class.fadeInLeft]="index % 2 === 0" [class.fadeInRight]="index % 2 != 0"
+                       [style.animation-delay]="index/5 + 's'"
+                       [dedication]="dedication">
+    <h1>{{index}}</h1>
   </app-dedication-card>
 </div>

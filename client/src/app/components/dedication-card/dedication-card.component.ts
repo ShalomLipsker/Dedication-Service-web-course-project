@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Dedication } from 'src/app/models/dedication.interface';
 import { DedicationService } from 'src/app/services/dedication.service';
@@ -17,8 +18,9 @@ export class DedicationCardComponent implements OnInit {
   readonly isDedicationRepeat = isDedicationRepeat;
 
   constructor(
-    private dedicationService: DedicationService,
     private router: Router,
+    private snackBar: MatSnackBar,
+    private dedicationService: DedicationService,
   ) {}
 
   ngOnInit(): void {}
@@ -31,10 +33,19 @@ export class DedicationCardComponent implements OnInit {
     if (confirm('האם לאשר מחיקה?')) {
       this.dedicationService.deleteDedication(this.dedication._id).subscribe(
         (res) => {
-          alert('נמחק בהצלחה');
+          this.snackBar.open('נמחק בהצלחה', '', {
+            panelClass: 'form-success-snack',
+            duration: 2000,
+            verticalPosition: 'top',
+          });
         },
-        (err) => {
-          alert('אירעה בעיה, יש לנסות שוב');
+        () => {
+          this.snackBar.open('אירעה בעיה, יש לנסות שוב', '', {
+            direction: 'rtl',
+            duration: 2000,
+            verticalPosition: 'top',
+            panelClass: 'login-server-error-snack',
+          });
         },
       );
     }

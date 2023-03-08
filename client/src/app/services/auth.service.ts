@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -17,9 +18,10 @@ export class AuthService {
   }
 
   constructor(
+    private router: Router,
+    private snackBar: MatSnackBar,
     private apiService: ApiService,
     private cookieService: CookieService,
-    private router: Router,
   ) {
     this._$isLogin = new BehaviorSubject<boolean>(false);
     this._isLogin();
@@ -37,10 +39,20 @@ export class AuthService {
       },
       (err) => {
         this._$isLogin.next(false);
-        if (err.status == 401) {
-          alert('שם משתמש או סיסמה שגויים');
+        if (err.status === 401) {
+          this.snackBar.open('שם משתמש או סיסמה שגויים', '', {
+            direction: 'rtl',
+            duration: 2000,
+            verticalPosition: 'top',
+            panelClass: 'login-form-error-snack',
+          });
         } else {
-          alert('בעיית שרת, נא לנסות שוב');
+          this.snackBar.open('בעיית שרת, נא לנסות שוב', '', {
+            direction: 'rtl',
+            duration: 2000,
+            verticalPosition: 'top',
+            panelClass: 'login-server-error-snack',
+          });
         }
         this.router.navigate(['login']);
       },

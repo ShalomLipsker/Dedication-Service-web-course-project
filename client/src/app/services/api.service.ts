@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { response } from 'express';
 import { CookieService } from 'ngx-cookie';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Dedication } from '../models/dedication.interface';
 
@@ -53,6 +55,14 @@ export class ApiService {
       dedication,
       this.options,
     ) as Observable<Dedication>;
+  }
+
+  getHebrewDate(date: Date) {
+    return this.http
+      .get<{ hebrew: string }>(
+        `http://www.hebcal.com/converter/?cfg=json&gy=${date.getFullYear()}&gm=${date.getMonth()}&gd=${date.getDate()}&g2h=1`,
+      )
+      .pipe(map((hebrewDateResponse) => hebrewDateResponse.hebrew));
   }
 
   get options() {

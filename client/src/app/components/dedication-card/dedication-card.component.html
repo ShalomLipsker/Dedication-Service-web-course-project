@@ -1,21 +1,25 @@
-<div class="card-container">
-  <div class="card-section">
-    <div class="text-content">
-      <div class="text-header">{{dedication.title}}</div>
-      <div class="text-sub-header">{{renderPlainHebDate(dedication.date)}}</div>
-      <div class="text-description">{{dedication.description}}</div>
-      <hr class="hr-solid">
-      <div class="info-area">
+<div class="card">
+  <div class="top">
+    <img [src]="dedication.image" />
+    <div class="details">
+      <div class="primary">
+        <span class="title">{{dedication.title}}</span>
+        <span class="date">
+          <mat-icon>today</mat-icon>
+          {{renderPlainHebDate(dedication.date)}}
+        </span>
+        <span class="is-repeat">
+          <mat-icon>restart_alt</mat-icon>
         {{isDedicationRepeat(dedication) ? 'חוזר כל שנה' : 'חד פעמי'}}
+      </span>
       </div>
-    </div>
-    <div class="image-content">
-      <img [src]="dedication.image" alt="Photo of dedication">
+
+      <span class="description">{{dedication.description}}</span>
     </div>
   </div>
-  <hr class="hr-solid">
-  <div class="card-actions-section">
-    <button mat-button (click)="editDedication()">עריכה</button>
-    <button mat-button (click)="deleteDedication()">מחיקה</button>
+
+  <div class="actions">
+    <mat-icon class="edit" (click)="editDedication()">edit</mat-icon>
+    <mat-icon class="delete" (click)="deleteDedication()">delete</mat-icon>
   </div>
 </div>
