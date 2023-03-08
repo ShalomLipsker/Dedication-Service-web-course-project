@@ -17,7 +17,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
-  // { path: 'error', component: ErrorScreenComponent },
   { path: '**', redirectTo: 'dedication' },
 ];
 

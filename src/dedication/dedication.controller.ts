@@ -37,7 +37,6 @@ export class DedicationController {
     @Query('day', ParseIntPipe) day: number,
     @Query('month', ParseIntPipe) month: number,
   ) {
-    // TODO: check validation
     return this.dedicationService.findByHebDate({ day, month });
   }
 
