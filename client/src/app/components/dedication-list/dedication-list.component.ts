@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { DedicationService } from 'src/app/services/dedication.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class DedicationListComponent implements OnInit {
 
   constructor(
     public dedicationService: DedicationService,
+    public authService: AuthService,
     public router: Router,
   ) {}
 
