@@ -1,29 +1,29 @@
 .list-container {
+  gap: 30px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .actions {
+    gap: 30px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
 
-.actions {
-    display: flex;
-    flex-direction: row;
-}
 
-mat-checkbox {
-    border: 1px solid #4051b5;
-    border-radius: 4px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 5px;
-    margin-left: 6px;
-}
+    .create-dedication-btn {
+      background: #0085ff;
+    }
+  }
 
-.mat-checkbox-label {
-    margin-right: 3px;
-}
+  .loading {
+    margin-top: 10em;
+  }
 
-.loading {
-    margin-top: 10px;
+  .logout-btn {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+  }
 }

@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  apiServerURL: "",
+  apiServerURL: '',
   cookies: {
     authToken: {
-      title: "Authorization"
-    }
-  }
+      title: 'Authorization',
+    },
+  },
 };

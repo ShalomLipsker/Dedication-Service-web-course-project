@@ -3,11 +3,13 @@ import { Dedication } from '../models/dedication.interface';
 import { isDedicationActive } from '../utils/dedication.utils';
 
 @Pipe({
-  name: 'OnlyActiveDedications'
+  name: 'OnlyActiveDedications',
 })
 export class OnlyActiveDedicationsPipe implements PipeTransform {
-
-  transform(dedications: Dedication[] | null, onlyRepeats: boolean): Dedication[] | null {
+  transform(
+    dedications: Dedication[] | null,
+    onlyRepeats: boolean,
+  ): Dedication[] | null {
     if (!onlyRepeats || dedications == null) {
       return dedications;
     }

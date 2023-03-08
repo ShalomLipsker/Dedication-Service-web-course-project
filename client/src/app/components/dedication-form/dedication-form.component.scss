@@ -1,63 +1,113 @@
 .form-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: auto;
-}
+  margin: auto;
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  max-width: 500px;
+  flex-direction: column;
 
-mat-form-field {
-    margin-top: 10px;
-}
-
-.hr-solid {
-    border: 0.1px solid #ededed;
-    width: 100%;
-}
-
-.date-form-field {
-    margin: 0 5px;
-    width: 50px;
-}
-
-.date-info {
-    margin-top: -13px;
-    display: flex;
-    flex-direction: row;
-}
-
-.date-rendered-text {
-    display: flex;
-    justify-content: center;
+  h1 {
     text-align: center;
-    align-items: center;
-    padding-right: 11px;
-}
+  }
 
-.form-field-image {
-    margin: 20px 0;
-}
+  mat-vertical-stepper {
+    border-radius: 5px;
+    background: #222;
 
-.form-title {
-    margin: 0;
-    color: rgb(92, 91, 91);
-}
+    .stepper-actions {
+      button {
+        background-color: #0085ff;
+        margin-left: 1em;
 
-.mat-form-field-appearance-standard .mat-form-field-flex {
-    padding-top: 0 !important;
-}
+        &.check {
+          background: limegreen;
+        }
 
-.image-cropped {
-    max-width: 200px;
-    align-self: center;
-    border-radius: 15px;
-    margin: 3px 10px;
-}
+        &:disabled {
+          opacity: .5;
+        }
+      }
+    }
 
-.slider {
-    margin-top: 10px;
-}
+    .deceased-details-form, .date-form, .image-form {
+      padding: calc(3em - 24px) 0 3em 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-.submit-btn {
-    margin-top: 25px;
-    margin-bottom: 10px;
+    .deceased-details-form {
+      textarea {
+        resize: none;
+        height: 5em;
+      }
+    }
+
+    .image-form {
+      input {
+        display: none;
+      }
+
+      label {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        flex-direction: column;
+
+        .empty-selection {
+          gap: 30px;
+          width: 250px;
+          height: 200px;
+          display: flex;
+          border-radius: 5px;
+          background: #000000;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+
+          mat-icon {
+            transition: .2s;
+            font-size: 2rem;
+          }
+
+          &:hover {
+            mat-icon {
+              width: 3rem;
+              height: 3rem;
+              margin-top: calc(100px - 3rem);
+              font-size: 3rem;
+              animation: 1s jello;
+              animation-delay: .1s;
+            }
+
+            span {
+              animation: .5s fadeOutDown forwards;
+            }
+          }
+        }
+
+        .with-selection {
+          margin-top: 3rem;
+          gap: 10px;
+          display: flex;
+        }
+      }
+    }
+
+    .date-form {
+      .hebrew-date-selection {
+        gap: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        mat-form-field {
+          width: 30%;
+        }
+      }
+
+      .hebrew-date {
+        margin-bottom: 1.34375em;
+      }
+    }
+  }
 }

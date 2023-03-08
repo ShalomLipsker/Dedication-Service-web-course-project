@@ -1,31 +1,38 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieModule } from 'ngx-cookie';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DedicationCardComponent } from './components/dedication-card/dedication-card.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { DedicationListComponent } from './components/dedication-list/dedication-list.component';
-import { ApiService } from './services/api.service';
 import { DedicationFormComponent } from './components/dedication-form/dedication-form.component';
-import { AuthGuard } from './services/auth.guard';
-import { OnlyActiveDedicationsPipe } from './pipes/only-repeat-dedications.pipe';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ImageCropperModule } from 'ngx-image-cropper';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSelectModule } from '@angular/material/select';
-import { CookieModule } from 'ngx-cookie';
+import { DedicationListComponent } from './components/dedication-list/dedication-list.component';
 
 import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
 import { LoginComponent } from './components/login/login.component';
+import { FeaturesModule } from './features/features.module';
+import { OnlyActiveDedicationsPipe } from './pipes/only-repeat-dedications.pipe';
+import { ApiService } from './services/api.service';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,13 +42,14 @@ import { LoginComponent } from './components/login/login.component';
     DedicationFormComponent,
     OnlyActiveDedicationsPipe,
     ImageCropperComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     HttpClientModule,
     ImageCropperModule,
@@ -53,9 +61,23 @@ import { LoginComponent } from './components/login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    FeaturesModule,
+    MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatStepperModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [ApiService, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+    AuthGuard,
+    { provide: MAT_DATE_LOCALE, useValue: 'he-IL' },
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false },
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

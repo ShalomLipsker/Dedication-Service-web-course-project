@@ -1,11 +1,70 @@
-.form-container {
+.login-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  app-candle {
+    position: absolute;
+    bottom: calc(50% - 200px);
+    animation: .3s shrinkWidth ease-out forwards;
+
+    @keyframes shrinkWidth {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      70% {
+        transform: scale(1);
+        bottom: calc(50% - 200px);
+      }
+      100% {
+        bottom: 0;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .login-form {
+    width: 100%;
     display: flex;
+    gap: 1.34375em;
+    margin-top: 50px;
+    align-items: center;
     flex-direction: column;
-    max-width: 500px;
-    margin: auto;
+
+    .form-headline, .form-input {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-headline {
+      text-align: center;
+
+      .title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .subtitle {
+        font-size: 2rem;
+      }
+    }
+
+    .form-input, .submit-btn {
+      width: 50%;
+      min-width: 400px;
+      max-width: 550px;
+    }
+
+    .submit-btn {
+      background-color: rgba(0, 133, 255, .3);
+
+      &:not(:disabled) {
+        background-color: #0085ff;
+      }
+    }
+  }
 }
 
-.submit-btn {
-    margin-top: 25px;
-    margin-bottom: 10px;
-}

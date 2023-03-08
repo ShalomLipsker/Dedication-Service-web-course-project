@@ -1,11 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {
-    height: 100%;
+html, body {
+  margin: 0;
+  height: auto;
+  width: 100%;
+  direction: rtl;
+  background: #000000;
 }
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    direction: rtl;
+
+* {
+  color: #ffffff;
 }
+
+span, h1, h2, h3, h4, h5, h6, textarea, input, div {
+  caret-color: #ffffff !important;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+
+/* snack bar */
+.form-error-snack {
+  background: #e00000;
+  display: flex !important;
+  justify-content: center;
+}
+
+.login-server-error-snack {
+  background: #0085ff;
+  display: flex !important;
+  justify-content: center;
+}
+
+.form-success-snack {
+  background: #2ec02e;
+  display: flex !important;
+  justify-content: center;
+}
+
+/* mat stepper */
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #0085ff !important;
+  color: #0085ff !important;
+}
+
+/* mat input */
+.mat-form-field-ripple {
+  background-color: #0085ff !important;
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #ffffff;
+}
+
+/* mat spinner */
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #0085ff;
+}
+
+
